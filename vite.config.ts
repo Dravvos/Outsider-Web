@@ -15,6 +15,7 @@ export default defineConfig({
       }
     }
   },
+  base: '/Outsider.Web',
   plugins: [
     vue(),
   ],
