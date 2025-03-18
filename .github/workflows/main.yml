@@ -23,3 +23,26 @@ jobs:
 
       - name: Build Vue App
         run: npm run build
+
+      - name: Upload production artifact
+        id: upload_artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: dist/
+      
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifacts
+          path: dist/
+
+      - name: Copy files via SCP
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USERNAME }}
+          password: ${{ secrets.VM_PASSWORD }}
+          port: 22
+          source: "dist/"
+          target: "/var/www/html/Outsider.Web/"
