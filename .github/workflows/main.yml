@@ -44,6 +44,8 @@ jobs:
           username: ${{secrets.VM_USERNAME}}
           password: ${{secrets.VM_PASSWORD}}
           script: |
+            echo "${{ secrets.VM_PASSWORD }}" | sudo -S chown -R ${{ secrets.VM_USERNAME }}:${{ secrets.VM_USERNAME }} dist
+            echo "${{ secrets.VM_PASSWORD }}" | sudo -S rm -rf Outsider.Web
             echo "${{ secrets.VM_PASSWORD }}" | sudo -S mv dist Outsider.Web
         env:
           VM_PASSWORD: ${{ secrets.VM_PASSWORD }}
