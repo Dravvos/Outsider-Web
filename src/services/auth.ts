@@ -1,12 +1,11 @@
 import { UserManager, type UserManagerSettings, User } from 'oidc-client-ts';
 const settings: UserManagerSettings = {
-    authority: import.meta.env.VITE_API_IdentityServer,
-    client_id: 'vue-client',
-    redirect_uri: 'http://localhost:5173/callback',
-    response_type: 'code',
-    scope: 'openid profile Outsider',
-    post_logout_redirect_uri: 'http://localhost:5173/',
-    client_secret: import.meta.env.VITE_ClientSecret,
+  authority: import.meta.env.VITE_API_IdentityServer,
+  client_id: 'vue-client',
+  redirect_uri: import.meta.env.VITE_redirect_uri,
+  response_type: 'code',
+  scope: 'openid profile Outsider',
+  post_logout_redirect_uri: import.meta.env.post_logout_redirect_uri
 };
 
 const userManager = new UserManager(settings);
