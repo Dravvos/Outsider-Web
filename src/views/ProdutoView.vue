@@ -21,6 +21,7 @@ const tamanhosEmEstoque = ref<any>([]);
 const produtosEmEstoque = ref<any>([]);
 
 async function AdicionarAoCarrinho() {
+
   if (global.util.isNullOrEmpty(tamanho.value)) {
     global.ui.notification.error(toast, "Escolha um tamanho (mesmo que só tenha uma opção)");
     return;
@@ -39,10 +40,14 @@ async function AdicionarAoCarrinho() {
       window.location.reload();
     }, 2800);
   }
+  else if (resp.status === 401) {
+    global.ui.notification.warning(toast, 'É necessário logar')
+  }
 }
 
 onMounted(async () => {
-  await global.util.isAuthenticated();
+  debugger;
+  //await global.util.isAuthenticated();
   const lastSlash = window.location.href.lastIndexOf('/');
   const guid = window.location.href.substring(lastSlash + 1);
 
@@ -61,8 +66,10 @@ onMounted(async () => {
   }
   else if (resp.status === 400 || resp.status === 500)
     global.ui.notification.error(toast, resp.error);
-  else if (resp.status === 401)
+  else if (resp.status === 401) {
+    global.ui.notification.warning(toast, 'É necessário logar')
     router.push('/')
+  }
   else if (resp.status === 403)
     router.push('/')
 
