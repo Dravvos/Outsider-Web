@@ -10,32 +10,31 @@
         <div class="row row-gap-3 mb-3">
           <div class="col-4">
             <FloatLabel variant="in">
-              <InputText fluid v-model="nome" style="background-color: #30313D;" />
+              <InputText fluid v-model="nome" class="bg-Checkout" />
               <label class="text-white">Nome</label>
             </FloatLabel>
           </div>
           <div class="col-8">
             <FloatLabel variant="in">
-              <InputText fluid v-model="sobrenome" style="background-color: #30313D;" />
+              <InputText fluid v-model="sobrenome" class="bg-Checkout" />
               <label class="text-white">Sobrenome</label>
             </FloatLabel>
           </div>
           <div class="col-9">
             <FloatLabel variant="in">
-              <InputText v-model="email" type="email" fluid style="background-color: #30313D;" />
+              <InputText v-model="email" type="email" fluid class="bg-Checkout" />
               <label class="text-white">E-mail</label>
             </FloatLabel>
           </div>
           <div class="col-3">
             <FloatLabel variant="in">
-              <InputMask v-model="telefone" mask="(99) 9 9999-9999" fluid style="background-color: #30313D;" />
+              <InputMask v-model="telefone" mask="(99) 9 9999-9999" fluid class="bg-Checkout" />
               <label class="text-white">Telefone</label>
             </FloatLabel>
           </div>
           <div class="col-12">
             <FloatLabel variant="in">
-              <Select fluid :options="enderecos" v-model="endereco" option-label="logradouro"
-                style="background-color: #30313D;">
+              <Select fluid :options="enderecos" v-model="endereco" option-label="logradouro" class="bg-Checkout">
                 <template #option="slotProps">
                   <div>
                     {{ slotProps.option.logradouro }}, {{ slotProps.option.numero }} - {{ slotProps.option.bairro
@@ -59,7 +58,7 @@
           <Card>
             <template #content>
               <DataTable :value="products" v-if="itensCarrinho.length == 0 && !itensCarrinho.status">
-                <Column header="Detalhes Produto" style="width: 100em">
+                <Column header="Detalhes Produto" class="width">
                   <template #body>
                     <Skeleton></Skeleton>
                   </template>
@@ -78,7 +77,7 @@
 
               <DataTable v-else :value="itensCarrinho" column-resize-mode="fit" class="mb-3">
                 <Column hidden field="id" header="Id"></Column>
-                <Column field="produto.nome" header="Detalhes Produto" style="width: 100em;">
+                <Column field="produto.nome" header="Detalhes Produto" class="width">
                   <template #body="slotProps">
                     <h4>
                       {{ slotProps.data.produto.nome }} - {{
@@ -101,7 +100,7 @@
 
               <span class="text-warning">Valor a pagar: {{ valorPagarTexto }}</span>
               <br />
-              <span style="color:rgb(52, 211, 153)">Desconto: {{ descontoTexto }}</span>
+              <span class="green-Text">Desconto: {{ descontoTexto }}</span>
 
             </template>
           </Card>
@@ -112,7 +111,19 @@
   </div>
 
 </template>
+<style scoped>
+.bg-Checkout {
+  background-color: #30313D;
+}
 
+.width {
+  width: 100em;
+}
+
+.green-Text {
+  color: rgb(52, 211, 153);
+}
+</style>
 <script setup lang="ts">
 import { onBeforeMount, onMounted, ref } from "vue"
 import { loadStripe, } from "@stripe/stripe-js"
