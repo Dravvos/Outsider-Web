@@ -46,7 +46,6 @@ async function AdicionarAoCarrinho() {
 }
 
 onMounted(async () => {
-  debugger;
   //await global.util.isAuthenticated();
   const lastSlash = window.location.href.lastIndexOf('/');
   const guid = window.location.href.substring(lastSlash + 1);
