@@ -5,7 +5,7 @@ const settings: UserManagerSettings = {
   redirect_uri: import.meta.env.VITE_redirect_uri,
   response_type: 'code',
   scope: 'openid profile Outsider',
-  post_logout_redirect_uri: import.meta.env.post_logout_redirect_uri
+  post_logout_redirect_uri: import.meta.env.VITE_post_logout_redirect_uri
 };
 
 const userManager = new UserManager(settings);

@@ -159,16 +159,4 @@ function atualizarProdutoEscolhido(tgTamanho: any) {
     </Card>
 
   </div>
-  <div class="pt-4 container">
-    <Card>
-      <template #title>
-        <h1>Avaliações do produto</h1>
-      </template>
-      <template #content>
-        <div>
-          <p>Comentário</p>
-        </div>
-      </template>
-    </Card>
-  </div>
 </template>

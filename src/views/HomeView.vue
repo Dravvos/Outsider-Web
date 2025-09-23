@@ -40,12 +40,12 @@ function substringDescricao(descricao: string) {
   <Header />
   <div class="container">
     <div v-if="produtos.length > 0" class="row row-gap-4">
-      <div class="col-3 " v-for="(item, index) in produtos">
+      <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" v-for="(item, index) in produtos">
         <Card>
           <template #title>
             <h1>{{
               substringNome(item.nome)
-            }}</h1>
+              }}</h1>
             <Divider />
           </template>
           <template #content>
